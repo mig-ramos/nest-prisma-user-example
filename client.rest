@@ -1,0 +1,107 @@
+@baseUrl=http://localhost:3333
+@token =Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6Ik1hcmkgUmFtb3MiLCJlbWFpbCI6Im1hcmlAdGVzdGUuY29tIiwiaWF0IjoxNzMzNzgyNjkzLCJleHAiOjE3MzQzODc0OTMsImF1ZCI6InVzZXJzIiwiaXNzIjoibG9naW4iLCJzdWIiOiIzIn0.xhUnMmgcBy9nrzW8aGQtQzU4pri6OLesX7xuyyT0Hko
+
+###
+## TESTE
+GET {{baseUrl}} HTTP/1.1
+
+
+### ROTAS DOS USERS
+
+###
+## FIND ALL
+GET {{baseUrl}}/users HTTP/1.1
+Authorization: {{token}}
+
+###
+## FIND ONE
+GET {{baseUrl}}/users/1 HTTP/1.1
+Authorization: {{token}}
+
+###
+## DELETE
+DELETE {{baseUrl}}/users/2 HTTP/1.1
+Authorization: {{token}}
+
+###
+## CREATE
+POST {{baseUrl}}/users HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "name": "Miguel Ramos",
+    "email": "miguel@teste.com",
+    "password": "123456"
+}
+
+###
+## UPDATE
+PUT {{baseUrl}}/users/3 HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "name": "Mari C Ramos",
+    "email": "mari@teste.com",
+    "password": "123456"
+}
+
+###
+## UPDATE PARTIAL
+PATCH {{baseUrl}}/users/3 HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "name": "Mari Ramos"
+}
+
+### ROTAS AUTH
+
+###
+## LOGIN
+POST {{baseUrl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "mari@teste.com",
+    "password": "123456" 
+}
+
+###
+## REGISTER
+POST {{baseUrl}}/auth/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Mari Ramos",
+    "email": "mari@teste.com",
+    "password": "123456"
+}
+
+###
+## FORGET
+POST {{baseUrl}}/auth/forget HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "mari@teste.com"
+}
+
+###
+## RESET
+POST {{baseUrl}}/auth/reset HTTP/1.1
+Content-Type: application/json
+
+{
+    "password": "654321",
+    "token": "93473.3434.23434"
+}
+
+###
+## ME
+POST {{baseUrl}}/auth/me HTTP/1.1
+Content-Type: application/json
+Authorization: {{token}}
+
